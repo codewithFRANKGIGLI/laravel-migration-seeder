@@ -19,14 +19,14 @@ class TrainsTableSeeder extends Seeder
         $trains = config('trains');
         foreach($trains as $train) {
             $newTrain = new Train();
-            $newTrain->company = $faker->company;
-            $newTrain->train_name = $faker->company;
-            $newTrain->departure_station = $faker->company;
-            $newTrain->arrival_station = $faker->company;
+            $newTrain->company = $faker->randomElement('Treni Italia', 'Italo', 'CH-Train');
+            $newTrain->train_name = $faker->randomElement('TizioTrain', 'CaioTrain', 'MiloTrain');
+            $newTrain->departure_station = $faker->word();
+            $newTrain->arrival_station = $faker->word();
             $newTrain->departure_time = $faker->time();
             $newTrain->arrival_time = $faker->time();
             $newTrain->price = $faker->randomFloat(2, 0, 100);
-            $newTrain->available_seats = $faker->randomDigit;
+            $newTrain->available_seats = $faker->randomDigit(2, true);
             $newTrain->save();
         }
     }
